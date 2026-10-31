@@ -141,10 +141,6 @@ leakage_candidates = ['ReservationStatus', 'ReservationStatusDate', 'BookingChan
 present_leakage = [col for col in leakage_candidates if col in df.columns]
 print(f"Identified potential data leakage columns: {present_leakage}")
 
-# 6.3 Missingness Imputation Plan for Person B
-print("\nRecommended Imputation Strategy for Person B:")
-print(" - Agent / Company: Impute missing values with 'None' string (indicates direct booking).")
-print(" - Country: Impute missing values with Mode or 'Unknown'.")
-print(" - Children: Impute missing numerical values with 0.")
+
 
 print("\n--- Execution Complete! Check 'outputs/' for saved visualizations. ---")
