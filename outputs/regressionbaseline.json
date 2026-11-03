@@ -1,0 +1,48 @@
+{
+  "status": "provisional; cleaning and feature availability require team sign-off",
+  "task": "ADR regression, at booking creation",
+  "dataset": "data/H2_cleaned.csv",
+  "rows": {
+    "total": 78091,
+    "train": 50899,
+    "validation": 11859,
+    "reserved_final_test_not_evaluated": 15333
+  },
+  "split": {
+    "method": "GroupShuffleSplit on input-feature row hashes",
+    "seed": 42,
+    "group_overlap_between_splits": 0,
+    "group_test_fraction": 0.2,
+    "group_validation_fraction_of_development": 0.2
+  },
+  "features": [
+    "LeadTime",
+    "ArrivalDateYear",
+    "ArrivalDateWeekNumber",
+    "ArrivalDateDayOfMonth",
+    "StaysInWeekendNights",
+    "StaysInWeekNights",
+    "Adults",
+    "Children",
+    "Babies",
+    "PreviousCancellations",
+    "PreviousBookingsNotCanceled",
+    "Meal",
+    "Country",
+    "MarketSegment",
+    "DistributionChannel",
+    "ReservedRoomType",
+    "DepositType",
+    "CustomerType",
+    "IsRepeatedGuest",
+    "ArrivalDateMonth"
+  ],
+  "model": "LinearRegression (untuned)",
+  "validation_metrics": {
+    "MAE": 17.0721,
+    "MSE": 533.7335,
+    "RMSE": 23.1027,
+    "R2": 0.62
+  },
+  "final_test_evaluated": false
+}
