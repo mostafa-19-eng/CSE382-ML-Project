@@ -17,7 +17,13 @@ if not os.path.exists(data_path):
     print(f"ERROR: {data_path} not found. Please ensure H2.csv is placed in the data/ directory.")
     exit()
 
-df = pd.read_csv(data_path)
+# --- UPDATED PARSING TO MATCH CLEANING SCRIPT ---
+missing_markers = ['NULL', 'null', '', ' ', '   ', 'NaN', 'nan']
+df = pd.read_csv(data_path, na_values=missing_markers, skipinitialspace=True)
+df.replace(r'^\s*NULL\s*$', np.nan, regex=True, inplace=True)
+df.replace(r'^\s*$', np.nan, regex=True, inplace=True)
+# -----------------------------------------------
+
 print(f"Successfully loaded H2.csv with shape: {df.shape}")  # Should be (79330, 31)
 
 # ==========================================
@@ -140,7 +146,5 @@ print(f"Constant/Zero-variance columns to drop: {constant_cols}")
 leakage_candidates = ['ReservationStatus', 'ReservationStatusDate', 'BookingChanges']
 present_leakage = [col for col in leakage_candidates if col in df.columns]
 print(f"Identified potential data leakage columns: {present_leakage}")
-
-
 
 print("\n--- Execution Complete! Check 'outputs/' for saved visualizations. ---")
