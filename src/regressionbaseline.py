@@ -1,7 +1,7 @@
 """CSE382 Milestone 1: reproducible, untuned ADR regression baseline (Person C).
 
 Run from the project root:
-    python -m src.regression_baseline
+    python3 -m src.regressionbaseline
 
 The held-out final test portion is NEVER evaluated here. This experiment uses a
 conservative booking-creation feature set and prevents identical feature
